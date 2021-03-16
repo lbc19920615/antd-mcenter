@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Button } from 'antd';
+import { ThemeContext } from '../../context/themes';
 
 
 export default function ACom() {
+  const theme = useContext(ThemeContext);
+
   const [count, setCount] = useState(0);
   const [timeoutId, setTimeoutId] = useState(null);
 
@@ -23,6 +26,8 @@ export default function ACom() {
   }
 
   return (
-    <Button type="primary" onClick={handleClick}>Button</Button>
+    <div style={{ background: theme.background, color: theme.foreground }}>
+      <Button type="primary" onClick={handleClick}>Button</Button>
+    </div>
   )
 }
